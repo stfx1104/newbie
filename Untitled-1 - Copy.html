@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: url('https://cdn.discordapp.com/attachments/1285644827911782503/1337609785100472464/2825711.gif?ex=67a811b0&is=67a6c030&hm=06c85c641f&') no-repeat center center/cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .carousel {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .carousel-track {
+            display: flex;
+            width: 1000%; /* 10 รูป */
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        .music-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .music-button:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <button class="music-button" onclick="toggleMusic()">🎵 เปิด/ปิดเพลง</button>
+    <div class="container">
+        <h1>Happy Anniversary 0.3</h1>
+        <p>Happy Anniversary. Thank you for showing me what true love looks like!
+        </p>
+        <div class="carousel">
+            <img src="images/8f3810fa-12a3-41e1-a4c6-2812cb478678.jfif" alt="รูป 1">
+                <img src="images/quality_restoration_25680203000738886.jpg" alt="รูป 2">
+                <img src="images/IMG_4849.png" alt="รูป 3">
+                <img src="images/quality_restoration_25680206215608234.jpg" alt="รูป 4">
+                <img src="images/IMG_4762.jpg" alt="รูป 5">
+                <img src="images/2025-01-19_193127.png" alt="รูป 6">
+                <img src="images/image.png" alt="รูป 7">
+                <img src="images/image(1).png" alt="รูป 8">
+                <img src="images/image(2).png" alt="รูป 9">
+                <img src="images/image(3).png" alt="รูป 10">
+        </div>
+    </div>
+    <audio id="bg-music" autoplay loop>
+        <source src="https://cdn.discordapp.com/attachments/1285644827911782503/1337601871384416296/Violette_Wautier_-_This_Time___Mutual_Bar_Live_Session.mp3?ex=67a80a51&is=67a6b8d1&hm=805602da2615c02c2431411fea83f340ffd80747bf9a65bdb097a711c193c6a4&" type="audio/mpeg">
+    </audio>
+    <script>
+        var music = document.getElementById("bg-music");
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+        let currentIndex = 0;
+        function moveCarousel() {
+            const track = document.getElementById("carousel-track");
+            currentIndex = (currentIndex + 1) % 10;
+            track.style.transform = `translateX(-${currentIndex * 300}px)`;
+        }
+        setInterval(moveCarousel, 3000); 
+    </script>
+</body>
+</html>
